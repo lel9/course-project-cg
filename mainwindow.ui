@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>646</width>
+    <height>484</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="myTreeWidget" name="treeWidget">
+       <column>
+        <property name="text">
+         <string notr="true">1</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QMdiArea" name="mdiArea">
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>646</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="openAction"/>
+    <addaction name="saveDiaAction"/>
+    <addaction name="separator"/>
+    <addaction name="exitAction"/>
+   </widget>
+   <widget class="QMenu" name="diaMenu">
+    <property name="title">
+     <string>Диаграмма</string>
+    </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>Расчитать</string>
+     </property>
+     <addaction name="actionVT"/>
+     <addaction name="actionAT"/>
+     <addaction name="actionFT"/>
+    </widget>
+    <addaction name="actionXT"/>
+    <addaction name="menu"/>
+   </widget>
+   <widget class="QMenu" name="videoMenu">
+    <property name="title">
+     <string>Слежение</string>
+    </property>
+    <widget class="QMenu" name="trackPointMenu">
+     <property name="title">
+      <string>Точки слежения</string>
+     </property>
+     <addaction name="setPointAction"/>
+     <addaction name="delPointAction"/>
+     <addaction name="detectAction"/>
+    </widget>
+    <addaction name="playAction"/>
+    <addaction name="stopAction"/>
+    <addaction name="goToNextFrameAction"/>
+    <addaction name="goToPrevFrameAction"/>
+    <addaction name="separator"/>
+    <addaction name="trackPointMenu"/>
+   </widget>
+   <widget class="QMenu" name="settingMenu">
+    <property name="title">
+     <string>Инструменты</string>
+    </property>
+    <addaction name="crossCursor"/>
+    <addaction name="arrowCursor"/>
+    <addaction name="settingsAction"/>
+   </widget>
+   <widget class="QMenu" name="windowMenu">
+    <property name="title">
+     <string>Окно</string>
+    </property>
+    <addaction name="sidePanelAction"/>
+   </widget>
+   <widget class="QMenu" name="refMenu">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="aboutProgAction"/>
+    <addaction name="aboutAuthorAction"/>
+   </widget>
+   <addaction name="fileMenu"/>
+   <addaction name="videoMenu"/>
+   <addaction name="diaMenu"/>
+   <addaction name="settingMenu"/>
+   <addaction name="windowMenu"/>
+   <addaction name="refMenu"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="openAction"/>
+   <addaction name="saveDiaAction"/>
+   <addaction name="separator"/>
+   <addaction name="goToPrevFrameAction"/>
+   <addaction name="stopAction"/>
+   <addaction name="playAction"/>
+   <addaction name="goToNextFrameAction"/>
+   <addaction name="separator"/>
+   <addaction name="setPointAction"/>
+   <addaction name="separator"/>
+   <addaction name="actionXT"/>
+   <addaction name="separator"/>
+   <addaction name="settingsAction"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="openAction">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/film_4222.png</normaloff>:/images/images/film_4222.png</iconset>
+   </property>
+   <property name="text">
+    <string>Открыть видеозапись...</string>
+   </property>
+   <property name="iconText">
+    <string>Открыть</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="exitAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/door_in_9574.png</normaloff>:/images/images/door_in_9574.png</iconset>
+   </property>
+   <property name="text">
+    <string>Выход</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+  <action name="aboutProgAction">
+   <property name="text">
+    <string>О программе...</string>
+   </property>
+  </action>
+  <action name="sidePanelAction">
+   <property name="text">
+    <string>Показать/Скрыть боковую панель</string>
+   </property>
+   <property name="toolTip">
+    <string>Показать/Скрыть боковую панель</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+0</string>
+   </property>
+  </action>
+  <action name="aboutAuthorAction">
+   <property name="text">
+    <string>Об авторе...</string>
+   </property>
+  </action>
+  <action name="playAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/control_play_blue_eye_4069.png</normaloff>:/images/images/control_play_blue_eye_4069.png</iconset>
+   </property>
+   <property name="text">
+    <string>Начать слежение</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="goToNextFrameAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/control_fastforward_blue_9983.png</normaloff>:/images/images/control_fastforward_blue_9983.png</iconset>
+   </property>
+   <property name="text">
+    <string>К следующему кадру</string>
+   </property>
+   <property name="shortcut">
+    <string>Right</string>
+   </property>
+  </action>
+  <action name="goToPrevFrameAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/control_rewind_blue_7488.png</normaloff>:/images/images/control_rewind_blue_7488.png</iconset>
+   </property>
+   <property name="text">
+    <string>К предыдущему кадру</string>
+   </property>
+   <property name="shortcut">
+    <string>Left</string>
+   </property>
+  </action>
+  <action name="stopAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/control_stop_blue_6328.png</normaloff>:/images/images/control_stop_blue_6328.png</iconset>
+   </property>
+   <property name="text">
+    <string>Остановить слежение</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
+   </property>
+  </action>
+  <action name="cutAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/cut_6441.png</normaloff>:/images/images/cut_6441.png</iconset>
+   </property>
+   <property name="text">
+    <string>Вырезать</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="saveDiaAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/page_save_7402.png</normaloff>:/images/images/page_save_7402.png</iconset>
+   </property>
+   <property name="text">
+    <string>Сохранить диаграммы...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="settingsAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/cog_6908.png</normaloff>:/images/images/cog_6908.png</iconset>
+   </property>
+   <property name="text">
+    <string>Параметры...</string>
+   </property>
+  </action>
+  <action name="actionVT">
+   <property name="text">
+    <string>VT диаграмму...</string>
+   </property>
+  </action>
+  <action name="actionAT">
+   <property name="text">
+    <string>AT диаграмму...</string>
+   </property>
+  </action>
+  <action name="actionXT">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/chart_curve_add_5478.png</normaloff>:/images/images/chart_curve_add_5478.png</iconset>
+   </property>
+   <property name="text">
+    <string>Новая XT диаграмма...</string>
+   </property>
+  </action>
+  <action name="setPointAction">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/eye_4453.png</normaloff>:/images/images/eye_4453.png</iconset>
+   </property>
+   <property name="text">
+    <string>Задать точку</string>
+   </property>
+  </action>
+  <action name="delPointAction">
+   <property name="text">
+    <string>Удалить</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="crossCursor">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/cross_cursor.png</normaloff>:/images/images/cross_cursor.png</iconset>
+   </property>
+   <property name="text">
+    <string>Курсор-перекрестие</string>
+   </property>
+   <property name="toolTip">
+    <string>Позволяет отобразить координаты в пикселях в строке состояния</string>
+   </property>
+  </action>
+  <action name="arrowCursor">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/images/arrow_cursor.png</normaloff>:/images/images/arrow_cursor.png</iconset>
+   </property>
+   <property name="text">
+    <string>Курсор-стрелка</string>
+   </property>
+  </action>
+  <action name="InterpolateAction">
+   <property name="text">
+    <string>Аппроксимировать...</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Расчитать среднее...</string>
+   </property>
+  </action>
+  <action name="detectAction">
+   <property name="text">
+    <string>Детектор точек</string>
+   </property>
+  </action>
+  <action name="actionFT">
+   <property name="text">
+    <string>FT диаграмму...</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>myTreeWidget</class>
+   <extends>QTreeWidget</extends>
+   <header location="global">dialog/mytreewidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

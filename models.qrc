@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/models">
+        <file>models/corpus.mtl</file>
+        <file>models/corpus.obj</file>
+        <file>models/move1.mtl</file>
+        <file>models/move1.obj</file>
+        <file>models/move2.mtl</file>
+        <file>models/move2.obj</file>
+        <file>models/move3.mtl</file>
+        <file>models/move3.obj</file>
+        <file>models/state.mtl</file>
+        <file>models/state.obj</file>
+    </qresource>
+</RCC>

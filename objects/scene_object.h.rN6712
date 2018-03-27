@@ -1,0 +1,51 @@
+#ifndef SceneObject_H
+#define SceneObject_H
+
+#include <memory>
+using namespace std;
+
+#include <QObject>
+
+class Image;
+class Tracker;
+
+
+#include "item.h"
+#include "point3d.h"
+
+class SceneObject : public QObject
+{
+public:
+    SceneObject();
+    SceneObject(const Point3D &pos);
+    virtual ~SceneObject();
+
+    virtual bool isVideo();
+
+    virtual int id();
+    virtual void setId(int id);
+
+    virtual shared_ptr<Item> item();
+    virtual void setItem(const shared_ptr<Item> &item);
+
+    virtual void setStartFrame(Image *) { }
+    virtual Tracker* tracker() { return nullptr; }
+    virtual void findObjectPos(Image *) { }
+    virtual QPointF getObjectPos(Image *) { return QPointF(); }
+    virtual void transform(const TransformMatrix &m);
+
+    virtual void setPosition3D(const Point3D &pos) { _position3D = pos; }
+    virtual const Point3D &position3D() { return _position3D; }
+
+    virtual void setPrevPositions(const QVector<QPointF> &pos) { prevPositions = pos; }
+
+protected:
+    int _id;
+    shared_ptr<Item> _item;
+    Point3D _position3D;
+
+    QVector<QPointF> prevPositions;
+
+};
+
+#endif // SceneObject_H
